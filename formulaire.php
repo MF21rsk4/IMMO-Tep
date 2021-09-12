@@ -3,6 +3,10 @@ include_once ("inc/header.php");
 
 include_once("inc/connexion.php");
 
+$categories = $bdd->query('SELECT id_category, value FROM category;')->fetchAll(PDO::FETCH_ASSOC);
+// $create_dt = date("Y-m-d H:i:s A", strtotime($_POST['post_date']." ".$_POST['post_time']));
+// $phpdate = strtotime( $mysqldate );
+// $mysqldate = date( 'Y-m-d H:i:s', $phpdate );
 
 
 ?>
@@ -32,10 +36,10 @@ include_once("inc/connexion.php");
 					<label class="dark-text" for="category">Catégorie :</label>
 					<select class="browser-warning" name="category" required>
 						<option value="" selected disabled>Sélectionnez une catégorie</option>
-                        <option value="vente" selected disabled>Vente</option>
-                        <option value="location" selected disabled>Location</option>
+                        <!-- <option value="vente" selected disabled>Vente</option>
+                        <option value="location" selected disabled>Location</option> -->
 						<?php foreach ($categories as $category): ?>
-							<option value='<?= $category['id']; ?>' ><?= $category['nom']; ?></option>
+							<option value='<?= $category['id_category']; ?>' ><?= $category['value']; ?></option>
 						<?php endforeach; ?>
 					</select>
 				</p>
